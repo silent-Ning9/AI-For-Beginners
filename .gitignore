@@ -373,4 +373,4 @@ MigrationBackup/
 
 # lessons data
 lessons/3-NeuralNetworks/04-OwnFramework/lab/mnist.pkl
-lessons/3-NeuralNetworks/05-Frameworks/lab/data/MNIST*.pkl
+lessons/3-NeuralNetworks/05-Frameworks/lab/data
