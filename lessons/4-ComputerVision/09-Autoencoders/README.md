@@ -65,6 +65,8 @@ Learn more about autoencoders in these corresponding notebooks:
 * [Autoencoders in TensorFlow](AutoencodersTF.ipynb)
 * [Autoencoders in PyTorch](AutoEncodersPyTorch.ipynb)
 
+For a detailed introduction with visual explanations (in Chinese), see [Autoencoder Intro Guide](Autoencoder_Intro.md).
+
 ## Properties of Autoencoders
 
 * **Data Specific** - they only work well with the type of images they have been trained on. For example, if we train a super-resolution network on flowers, it will not work well on portraits. This is because the network can produce higher resolution image by taking fine details from features learned from the training dataset.
