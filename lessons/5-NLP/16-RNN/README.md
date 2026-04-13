@@ -56,12 +56,13 @@ A Recurrent network, either one-directional or bidirectional, captures certain p
 
 *Picture from [this wonderful post](https://towardsdatascience.com/from-a-lstm-cell-to-a-multilayer-lstm-network-with-pytorch-2899eb5696f3) by Fernando López*
 
-## ✍️ Exercises: Embeddings
+## ✍️ Exercises: RNNs
 
 Continue your learning in the following notebooks:
 
 * [RNNs with PyTorch](RNNPyTorch.ipynb)
 * [RNNs with TensorFlow](RNNTF.ipynb)
+* [RNNs for Sentiment Analysis (IMDB Dataset)](RNN_IMDB.ipynb) - Demonstrates using RNN/LSTM for binary sentiment classification with movie reviews
 
 ## Conclusion
 

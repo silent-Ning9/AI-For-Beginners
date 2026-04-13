@@ -6,6 +6,10 @@ Lab Assignment from [AI for Beginners Curriculum](https://github.com/microsoft/a
 
 In this lab, you we challenge you to train Word2Vec model using Skip-Gram technique. Train a network with embedding to predict neighboring words in $N$-tokens-wide Skip-Gram window. You can use the [code from this lesson](../CBoW-TF.ipynb), and slightly modify it.
 
+**Reference implementations** are available:
+* [Skip-Gram TensorFlow Implementation](../SkipGram-TF.ipynb)
+* [Skip-Gram PyTorch Implementation](../SkipGram-PyTorch.ipynb)
+
 ## The Dataset
 
 You are welcome to use any book. You can find a lot of free texts at [Project Gutenberg](https://www.gutenberg.org/), for example, here is a direct link to [Alice's Adventures in Wonderland](https://www.gutenberg.org/files/11/11-0.txt)) by Lewis Carroll. Or, you can use Shakespeare's plays, which you can get using the following code:

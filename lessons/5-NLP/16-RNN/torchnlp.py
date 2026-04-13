@@ -3,6 +3,8 @@ import torch
 import torchtext
 import collections
 import os
+import pandas as pd
+import tarfile
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -12,15 +14,34 @@ tokenizer = torchtext.data.utils.get_tokenizer('basic_english')
 def load_dataset(ngrams=1,min_freq=1):
     global vocab, tokenizer
     print("Loading dataset...")
-    train_dataset, test_dataset = torchtext.datasets.AG_NEWS(root='./data')
-    train_dataset = list(train_dataset)
-    test_dataset = list(test_dataset)
+
+    # 直接从 CSV 加载原始文本（torchtext 返回 Tensor 而非原始文本）
+    data_dir = './data/ag_news_csv'
+    csv_file = os.path.join(data_dir, 'train.csv')
+
+    if not os.path.exists(csv_file):
+        tar_file = './data/ag_news_csv.tar.gz'
+        if os.path.exists(tar_file):
+            with tarfile.open(tar_file, 'r:gz') as tar:
+                tar.extractall('./data')
+
+    if os.path.exists(csv_file):
+        train_df = pd.read_csv(csv_file, header=None, names=['label', 'title', 'description'])
+        test_df = pd.read_csv(os.path.join(data_dir, 'test.csv'), header=None, names=['label', 'title', 'description'])
+        train_dataset = [(row['label'], row['title'] + ' ' + row['description']) for _, row in train_df.iterrows()]
+        test_dataset = [(row['label'], row['title'] + ' ' + row['description']) for _, row in test_df.iterrows()]
+    else:
+        from torchtext.datasets import AG_NEWS
+        train_dataset = list(AG_NEWS(root='./data', split='train'))
+        test_dataset = list(AG_NEWS(root='./data', split='test'))
+
     classes = ['World', 'Sports', 'Business', 'Sci/Tech']
     print('Building vocab...')
     counter = collections.Counter()
     for (label, line) in train_dataset:
         counter.update(torchtext.data.utils.ngrams_iterator(tokenizer(line),ngrams=ngrams))
-    vocab = torchtext.vocab.vocab(counter, min_freq=min_freq)
+    # torchtext 0.6.0 使用 Vocab 类
+    vocab = torchtext.vocab.Vocab(counter, min_freq=min_freq)
     return train_dataset,test_dataset,classes,vocab
 
 stoi_hash = {}

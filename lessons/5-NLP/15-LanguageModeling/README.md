@@ -18,12 +18,17 @@ In our previous examples, we used pre-trained semantic embeddings, but it is int
 
 > Image from [this paper](https://arxiv.org/pdf/1301.3781.pdf)
 
-## ✍️ Example Notebooks: Training CBoW model
+## ✍️ Example Notebooks: Training Word2Vec models
 
 Continue your learning in the following notebooks:
 
+### CBoW Model
 * [Training CBoW Word2Vec with TensorFlow](CBoW-TF.ipynb)
 * [Training CBoW Word2Vec with PyTorch](CBoW-PyTorch.ipynb)
+
+### Skip-Gram Model
+* [Training Skip-Gram Word2Vec with TensorFlow](SkipGram-TF.ipynb)
+* [Training Skip-Gram Word2Vec with PyTorch](SkipGram-PyTorch.ipynb)
 
 
 ## Conclusion
